@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class RegSingleton {
 
-    private static Map m_registry = new HashMap();
+    private static Map<String, Object> m_registry = new HashMap<>();
 
     /*
         初始化时将创建自身实例并注册到map中
@@ -39,7 +39,7 @@ public class RegSingleton {
             try {
                 m_registry.put(name, Class.forName(name).newInstance());
             } catch (Exception e) {
-                System.out.println("Error  happended");
+                System.out.println("Error  happened");
             }
         }
         return (RegSingleton) m_registry.get(name);
@@ -69,6 +69,7 @@ public class RegSingleton {
 
         /**
          * 一个示意性的商业方法
+         *
          * @return
          */
         public String abort() {
