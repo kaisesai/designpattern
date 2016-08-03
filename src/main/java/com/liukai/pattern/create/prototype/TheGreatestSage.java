@@ -120,7 +120,7 @@ class Monkey implements Cloneable, Serializable {
                 "height=" + height +
                 ", weight=" + weight +
                 ", staff=" + staff +
-                ", birthDate=" + birthDate +
+                ", birthDate=" + birthDate + ", " + super.toString() +
                 '}';
     }
 }
@@ -174,7 +174,7 @@ class GoldRingedStaff implements Serializable {
     public String toString() {
         return "GoldRingedStaff{" +
                 "heigth=" + heigth +
-                ", diameter=" + diameter +
+                ", diameter=" + diameter + ", " + super.toString() +
                 '}';
     }
 }
