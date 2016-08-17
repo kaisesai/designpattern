@@ -1,7 +1,6 @@
 package com.liukai.pattern.structural.adapter;
 
 import org.xml.sax.*;
-import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.*;
 import java.util.Enumeration;
@@ -10,12 +9,11 @@ import java.util.Properties;
 /**
  * Created by Administrator on 2016/8/15 0015.
  */
-public class MySAXApp extends DefaultHandler {
+public class MySAXApp {
 
     public static void main(String[] args) {
 
     }
-
 
 }
 
