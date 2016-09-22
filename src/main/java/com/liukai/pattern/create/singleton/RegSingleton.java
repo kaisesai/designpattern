@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 登记式单例模式（克服恶汉式和懒汉式单例模式无法继承的问题）
+ * 登记式单例模式（克服饿汉式和懒汉式单例模式无法继承的问题）
  * Created by Administrator on 2016/7/21 0021.
  */
 public class RegSingleton {

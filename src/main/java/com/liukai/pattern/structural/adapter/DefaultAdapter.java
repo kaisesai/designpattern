@@ -8,17 +8,90 @@ package com.liukai.pattern.structural.adapter;
 public class DefaultAdapter {
 
     public static void main(String[] args) {
-        和尚 鲁智深 = new 鲁智深();
-        String name = 鲁智深.getName();
+        Monk LuZhiShen = new LuZhiShen();
+        String name = LuZhiShen.getName();
         System.out.println(name);
-        鲁智深.习武();
+        LuZhiShen.practiseWuShu();
     }
 }
 
-class 鲁智深 extends 天星 {
+/**
+ * 和尚
+ */
+interface Monk {
+
+    /**
+     * 吃斋
+     */
+    void eat();
+
+    /**
+     * 念经
+     */
+    void recite();
+
+    /**
+     * 打坐
+     */
+    void meditation();
+
+    /**
+     * 撞钟
+     */
+    void toll();
+
+    /**
+     * 习武
+     */
+    void practiseWuShu();
+
+    String getName();
+
+}
+
+/**
+ * 缺省适配器类————天星
+ */
+abstract class Star implements Monk {
 
     @Override
-    public void 习武() {
+    public void eat() {
+
+    }
+
+    @Override
+    public void recite() {
+
+    }
+
+    @Override
+    public void meditation() {
+
+    }
+
+    @Override
+    public void toll() {
+
+    }
+
+    @Override
+    public void practiseWuShu() {
+
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+}
+
+/**
+ * 鲁智深
+ */
+class LuZhiShen extends Star {
+
+    @Override
+    public void practiseWuShu() {
         System.out.println("拳打镇关西");
         System.out.println("大闹五台山");
         System.out.println("大闹桃花村");
@@ -32,57 +105,3 @@ class 鲁智深 extends 天星 {
     }
 }
 
-/**
- * 缺省适配器类
- */
-abstract class 天星 implements 和尚 {
-
-    @Override
-    public void 吃斋() {
-
-    }
-
-    @Override
-    public void 念经() {
-
-    }
-
-    @Override
-    public void 打坐() {
-
-    }
-
-    @Override
-    public void 撞钟() {
-
-    }
-
-    @Override
-    public void 习武() {
-
-    }
-
-    @Override
-    public String getName() {
-        return null;
-    }
-}
-
-/**
- * 和尚
- */
-interface 和尚 {
-
-    void 吃斋();
-
-    void 念经();
-
-    void 打坐();
-
-    void 撞钟();
-
-    void 习武();
-
-    String getName();
-
-}
