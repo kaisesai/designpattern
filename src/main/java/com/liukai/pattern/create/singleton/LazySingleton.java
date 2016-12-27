@@ -41,7 +41,7 @@ public class LazySingleton {
             synchronized (LazySingleton.class) {
                 if (lazySingleton == null) {
                     lazySingleton = new LazySingleton();
-                }
+            }
             }
         }
         return lazySingleton;

@@ -90,6 +90,7 @@ class KeyInfo {
      * 内部方法，从数据库提取键的当前值
      */
     private void retrieveFromDB() {
+
         String sql1 = "update keyTable set keyValue=keyValue+" + poolSize + " where keyName=" + keyName;
         String sql2 = "select keyValue from keyTable where keyName=" + keyName;
         //执行事务以及提交
