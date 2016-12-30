@@ -1,8 +1,10 @@
 package com.liukai.pattern.behavioral.chainofresponsibility;
 
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
+
+import static com.liukai.pattern.behavioral.chainofresponsibility.DrumBeater.random;
 
 /**
  * 责任链模式之击鼓传花
@@ -13,6 +15,7 @@ public class DrumBeater {
 
     static boolean stopped = false;
     Timer timer = new Timer();
+    public static ThreadLocalRandom random = ThreadLocalRandom.current();
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -31,20 +34,15 @@ public class DrumBeater {
         jiaZhen.setSuccessor(jiaBaoYu);
         jiaBaoYu.setSuccessor(jiaShe);
         jiaShe.setSuccessor(jiaHuan);
+        jiaHuan.setSuccessor(jiaMu);
 
         //开始击鼓
-        drumBeater.startBeating(1);
+        int time = (int) (Math.random() * 10);
+        System.out.println("击鼓时间为：" + time);
+        drumBeater.startBeating(time);
 
         //开始传花
         jiaMu.handle();
-
-        // while (true) {
-        //     //1秒之后再次执行
-        //     Thread.sleep(1000);
-        //     stopped = false;
-        //     jiaMu.handle();
-        // }
-
     }
 
     /**
@@ -112,7 +110,6 @@ abstract class Player {
 class ConcretePlayer extends Player {
 
     private String name;
-    private Random random = new Random(47);
 
     public ConcretePlayer(String name) {
         this.name = name;
@@ -124,7 +121,9 @@ class ConcretePlayer extends Player {
     @Override
     public void handle() {
         try {
-            Thread.sleep(random.nextInt(10) * 10);
+            long time = random.nextLong(0, 1000);
+            //设置睡眠的作用：1.模拟真实场景中不同的人传递花的速度 2.防止栈内存溢出（主要作用）
+            Thread.sleep(time);
         } catch (InterruptedException e) {
         }
         if (DrumBeater.stopped) {
